@@ -1,30 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ML API</title>
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <meta charset="UTF-8">
+    <title>Airfoil Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-  <div class="login">
-    <h1>Airfoil Prediction</h1>
-    <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}" method="post">
-      <input type="number" name="Frequency" placeholder="Frequency" required="required" /><br>
-      <input type="number" name="Angle_of_attack" placeholder="Angle of attack" required="required" /><br>
-      <input type="number" name="Chord_length" placeholder="Chord length" required="required" /><br>
-      <input type="number" name="Free-stream_velocity" placeholder="Free-stream velocity" required="required" /><br>
-      <input type="number" name="Suction_side" placeholder="Suction side" required="required" /><br>
-      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-    </form>
-    <br>
-    <br>
-    <div>
-      {{prediction_text}}
+    <div class="container">
+        <h1>Airfoil Prediction</h1>
+        <form action="{{ url_for('predict')}}" method="post">
+            <div class="form-group">
+                <label>Frequency</label>
+                <input type="number" name="Frequency" placeholder="Frequency" required />
+            </div>
+            <div class="form-group">
+                <label>Angle of attack</label>
+                <input type="number" name="Angle_of_attack" placeholder="Angle of attack" required />
+            </div>
+            <div class="form-group">
+                <label>Chord length</label>
+                <input type="number" name="Chord_length" placeholder="Chord length" required />
+            </div>
+            <div class="form-group">
+                <label>Free-stream velocity</label>
+                <input type="number" name="Free-stream_velocity" placeholder="Free-stream velocity" required />
+            </div>
+            <div class="form-group">
+                <label>Suction side</label>
+                <input type="number" name="Suction_side" placeholder="Suction side" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+        <div class="prediction">{{ prediction_text }}</div>
     </div>
-  </div>
 </body>
 </html>
